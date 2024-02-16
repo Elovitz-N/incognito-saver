@@ -39,8 +39,10 @@ chrome.tabs.onRemoved.addListener(tabId => {
 //changes a stored tab's windowId
 chrome.tabs.onAttached.addListener((tabId, attachInfo) => {
     chrome.storage.local.get(tabId.toString()).then(tabInfo => {
-        tabInfo[tabId].windowId = attachInfo.newWindowId
-        changedTab = Object.fromEntries([[tabId, tabInfo[tabId]]])
-        chrome.storage.local.set(changedTab).then(() => { console.log("tab moved to window") })
+        if (tabInfo[tabId]) {
+            tabInfo[tabId].windowId = attachInfo.newWindowId
+            changedTab = Object.fromEntries([[tabId, tabInfo[tabId]]])
+            chrome.storage.local.set(changedTab).then(() => { console.log("tab moved to window") })
+        }
     })
 });
