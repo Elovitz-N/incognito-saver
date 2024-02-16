@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Incognito Saver",
+    "version": "1.0",
+    "description": "restores incognito tabs after a chrome shutdown without storing data",
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": "images/icon-16.png"
+    },
+    "icons": {
+        "16": "images/icon-16.png"
+    },
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
