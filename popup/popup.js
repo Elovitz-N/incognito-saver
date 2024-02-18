@@ -26,5 +26,11 @@ restoreBtn.addEventListener("click", async () => {
 
 //clears stored data
 clearBtn.addEventListener("click", () => {
-    chrome.storage.local.clear();
+    chrome.storage.local.get().then(savedTabs => {
+        for (const tab in savedTabs) {
+            if (savedTabs[tab].isPreCrash) {
+                chrome.storage.local.remove(tab)
+            }
+        }
+    })
 });
