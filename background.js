@@ -7,7 +7,7 @@ chrome.runtime.onStartup.addListener(() => {
             await chrome.storage.local.remove(tab);
         };
         await chrome.storage.local.set(savedTabs);
-        console.log(savedTabs)
+        console.log(JSON.stringify(savedTabs))
     })
 })
 
