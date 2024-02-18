@@ -4,7 +4,6 @@ const clearBtn = document.getElementById("clearBtn")
 //restores all tabs marked pre-crash
 restoreBtn.addEventListener("click", async () => {
     chrome.storage.local.get().then(async savedTabs => {
-        console.log(savedTabs);
         const openedWindows = {};
         for (const tab in savedTabs) {
             if (savedTabs[tab].isPreCrash) {
